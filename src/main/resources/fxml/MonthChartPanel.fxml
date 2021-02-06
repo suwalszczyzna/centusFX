@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="centus.controllers.MonthlyChartPanelController">
+    <children>
+      <LineChart fx:id="monthlyLineChart" title="Wykres miesięczny">
+        <xAxis>
+          <CategoryAxis fx:id="daysAxis" label="Dni" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="sumAxis" label="Kwota" side="LEFT" />
+        </yAxis>
+      </LineChart>
+    </children>
+</VBox>

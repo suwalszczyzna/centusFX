@@ -3,26 +3,27 @@ package centus.controllers;
 import centus.viewmodel.chartModels.MonthlyChartModel;
 import centus.utils.exceptions.ApplicationException;
 import javafx.fxml.FXML;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
+import javafx.scene.Node;
+import javafx.scene.chart.*;
+import javafx.scene.paint.Color;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MonthlyChartPanelController {
+
     @FXML
-    private BarChart<String, Number> monthlyChart;
+    private LineChart<String, Number> monthlyLineChart;
     @FXML
     private CategoryAxis daysAxis;
     @FXML
     private NumberAxis sumAxis;
 
+
     SimpleDateFormat sdf = new SimpleDateFormat("dd.MM");
 
 
-    public void initialize(){
+    public void initialize() {
         MonthlyChartModel monthlyChartModel = new MonthlyChartModel(new Date());
 
         try {
@@ -31,17 +32,21 @@ public class MonthlyChartPanelController {
             e.printStackTrace();
         }
 
+        XYChart.Series<String, Number> expensesSeries = new XYChart.Series<>();
+        expensesSeries.setName("Wydatki");
+        monthlyChartModel.getChartItems().forEach(data -> {
+            expensesSeries.getData().add(new XYChart.Data<>(sdf.format(data.getDate()), data.getAmountExpenses()));
+        });
+
+        XYChart.Series<String, Number> profitsSeries = new XYChart.Series<>();
+        profitsSeries.setName("Przychody");
+        monthlyChartModel.getChartItems().forEach(data -> {
+            profitsSeries.getData().add(new XYChart.Data<>(sdf.format(data.getDate()), data.getAmountProfits()));
+        });
 
 
-        XYChart.Series series1 = new XYChart.Series();
-        series1.setName("Wydatki");
-        monthlyChartModel.getChartItems().forEach(i -> series1.getData().add(new XYChart.Data(sdf.format(i.getDate()), i.getAmountExpenses())));
+        monthlyLineChart.getData().addAll(expensesSeries, profitsSeries);
 
-        XYChart.Series series2 = new XYChart.Series();
-        series2.setName("Przychody");
-        monthlyChartModel.getChartItems().forEach(j -> series2.getData().add(new XYChart.Data(sdf.format(j.getDate()), j.getAmountProfits())));
-
-        monthlyChart.getData().addAll(series1, series2);
     }
 
 
