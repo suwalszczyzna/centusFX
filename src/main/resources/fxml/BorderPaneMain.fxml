@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="862.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="centus.controllers.MainController">
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="Program">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Ustawienia" />
+                        <MenuItem mnemonicParsing="false" onAction="#topMenuChangeUser" text="Zmień użytkownika" />
+                        <MenuItem mnemonicParsing="false" onAction="#topMenuCloseApp" text="Zamknij" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Wydatki / Przychody">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#topMenuAddExpense" text="Dodaj wydatek" />
+                        <MenuItem mnemonicParsing="false" onAction="#topMenuAddProfit" text="Dodaj przychód" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" onAction="#topMenuManageCategories" text="Zarządzaj kategoriami" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Pomoc">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#topMenuAboutApp" text="O programie" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <left>
+        <fx:include fx:id="leftMenu" source="LeftMenuButtons.fxml" />
+    </left>
+   <center>
+      <ImageView fitHeight="615.0" fitWidth="711.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../pictures/pic.jpg" />
+         </image>
+      </ImageView>
+   </center>
+</BorderPane>
