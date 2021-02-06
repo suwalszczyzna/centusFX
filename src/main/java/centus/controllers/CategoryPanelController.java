@@ -40,7 +40,7 @@ public class CategoryPanelController {
 
     CategoryPanelModel categoryPanelModel;
 
-    public void initialize(){
+    public void initialize() {
         categoryPanelModel = new CategoryPanelModel();
         try {
             categoryPanelModel.init();

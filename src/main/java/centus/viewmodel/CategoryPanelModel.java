@@ -39,7 +39,7 @@ public class CategoryPanelModel {
         });
     }
 
-    private void initProfitCategories() throws ApplicationException{
+    private void initProfitCategories() throws ApplicationException {
         ProfitCategoryDao profitCategoryDao = new ProfitCategoryDao();
         List<ProfitCategory> profitCategoryList = profitCategoryDao.queryForAll(ProfitCategory.class);
         this.profitCategoryFXObservableList.clear();
@@ -58,7 +58,7 @@ public class CategoryPanelModel {
 
     }
 
-    public void saveNewProfitCategoryToDB() throws ApplicationException{
+    public void saveNewProfitCategoryToDB() throws ApplicationException {
         ProfitCategory profitCategory = ConverterProfitCategory.convertToProfitCategory(this.getProfitCategoryFXObjectProperty());
         ProfitCategoryDao profitCategoryDao = new ProfitCategoryDao();
         profitCategoryDao.createOrUpdate(profitCategory);

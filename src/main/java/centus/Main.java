@@ -1,9 +1,7 @@
 package centus;
 
-import centus.database.dbutils.DbManager;
 import centus.database.model.User;
 import centus.utils.DialogUtils;
-import centus.utils.FillDatabase;
 import centus.utils.FxmlUtils;
 import centus.utils.exceptions.ApplicationException;
 import centus.utils.exceptions.LoginFailException;
@@ -46,11 +44,9 @@ public class Main extends Application {
             primaryStage.show();
 
 
-
-
         } catch (SQLException | ApplicationException | LoginFailException e) {
             DialogUtils.errorDialog(e.getMessage());
-        } catch (NullPointerException ne){
+        } catch (NullPointerException ne) {
             Platform.exit();
             System.exit(0);
         }

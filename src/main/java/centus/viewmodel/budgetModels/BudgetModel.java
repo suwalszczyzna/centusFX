@@ -1,12 +1,8 @@
 package centus.viewmodel.budgetModels;
 
 import centus.database.dao.BudgetDao;
-import centus.database.dao.ExpenseDao;
-import centus.database.dao.ProfitDao;
 import centus.database.model.Budget;
-import centus.database.model.User;
 import centus.utils.converters.ConverterBudget;
-import centus.utils.converters.ConverterDate;
 import centus.utils.exceptions.ApplicationException;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -14,8 +10,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 public class BudgetModel {

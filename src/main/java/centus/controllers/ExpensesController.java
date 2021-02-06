@@ -1,16 +1,14 @@
 package centus.controllers;
 
-import centus.viewmodel.budgetModels.BudgetSummaryModel;
+import centus.utils.DialogUtils;
+import centus.utils.exceptions.ApplicationException;
+import centus.viewmodel.NumberTextField;
 import centus.viewmodel.expenseModels.ExpenseCategoryFX;
 import centus.viewmodel.expenseModels.ExpenseFX;
 import centus.viewmodel.expenseModels.ExpenseModel;
-import centus.viewmodel.NumberTextField;
-import centus.utils.DialogUtils;
-import centus.utils.exceptions.ApplicationException;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class ExpensesController {

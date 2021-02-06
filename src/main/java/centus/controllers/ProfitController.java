@@ -1,11 +1,11 @@
 package centus.controllers;
 
+import centus.utils.DialogUtils;
+import centus.utils.exceptions.ApplicationException;
 import centus.viewmodel.NumberTextField;
 import centus.viewmodel.profitModels.ProfitCategoryFX;
 import centus.viewmodel.profitModels.ProfitFX;
 import centus.viewmodel.profitModels.ProfitModel;
-import centus.utils.DialogUtils;
-import centus.utils.exceptions.ApplicationException;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 

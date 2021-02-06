@@ -1,8 +1,8 @@
 package centus.controllers;
 
 import centus.utils.DialogUtils;
-import centus.utils.users.UserSession;
 import centus.utils.exceptions.ApplicationException;
+import centus.utils.users.UserSession;
 import centus.viewmodel.NumberTextField;
 import centus.viewmodel.budgetModels.BudgetFx;
 import centus.viewmodel.budgetModels.BudgetModel;
@@ -28,8 +28,7 @@ public class BudgetPanelController {
     private BudgetModel budgetModel;
 
 
-
-    public void initialize(){
+    public void initialize() {
         System.out.println(UserSession.getInstance("").getUserId());
         this.budgetModel = new BudgetModel();
         try {
@@ -52,7 +51,7 @@ public class BudgetPanelController {
 
         this.addNewBudgetButton.disableProperty().bind(
                 this.budgetValue.textProperty().isEmpty()
-                .or(this.budgetDate.valueProperty().isNull())
+                        .or(this.budgetDate.valueProperty().isNull())
         );
 
     }

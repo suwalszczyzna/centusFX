@@ -1,11 +1,12 @@
 package centus.controllers;
 
-import centus.viewmodel.chartModels.MonthlyChartModel;
 import centus.utils.exceptions.ApplicationException;
+import centus.viewmodel.chartModels.MonthlyChartModel;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.chart.*;
-import javafx.scene.paint.Color;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

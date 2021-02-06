@@ -1,6 +1,5 @@
 package centus.controllers;
 
-import centus.Main;
 import centus.database.model.User;
 import centus.utils.DialogUtils;
 import centus.utils.FxmlUtils;
@@ -12,7 +11,6 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 
 import java.sql.SQLException;
 import java.util.Optional;

@@ -1,6 +1,5 @@
 package centus.controllers;
 
-import centus.database.dao.ProfitDao;
 import centus.utils.exceptions.ApplicationException;
 import centus.viewmodel.chartModels.YearChartModel;
 import javafx.fxml.FXML;
@@ -23,7 +22,7 @@ public class YearChartPanelController {
     SimpleDateFormat sdf = new SimpleDateFormat("MMMM");
 
 
-    public void initialize(){
+    public void initialize() {
         YearChartModel yearChartModel = new YearChartModel(new Date());
 
         try {
