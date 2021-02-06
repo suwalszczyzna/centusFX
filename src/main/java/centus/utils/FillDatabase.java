@@ -38,7 +38,5 @@ public class FillDatabase {
 
         ExpenseCategory expenseCategory5 = new ExpenseCategory();
         expenseCategory5.setName("Hobby");
-
-
     }
 }

@@ -1,6 +1,5 @@
 package centus.controllers;
 
-import centus.utils.DialogUtils;
 import centus.utils.converters.ConverterDate;
 import centus.utils.exceptions.ApplicationException;
 import centus.viewmodel.budgetModels.BudgetSummaryModel;
@@ -31,7 +30,7 @@ public class LeftMenuController {
 
     private BudgetSummaryModel budgetSummaryModel;
 
-    public void initialize(){
+    public void initialize() {
         budgetSummaryModel = new BudgetSummaryModel();
         try {
             budgetSummaryModel.initBudgetSummary();
@@ -44,7 +43,7 @@ public class LeftMenuController {
 
     }
 
-    public void initLabels(){
+    public void initLabels() {
         this.spentValueLabel.textProperty().bindBidirectional(this.budgetSummaryModel.getBudgetSummaryFxObjectProperty().spentValueProperty());
         this.budgetValueLabel.textProperty().bindBidirectional(this.budgetSummaryModel.getBudgetSummaryFxObjectProperty().mainValueProperty());
         this.restValueLabel.textProperty().bindBidirectional(this.budgetSummaryModel.getBudgetSummaryFxObjectProperty().restValueProperty());
@@ -81,24 +80,6 @@ public class LeftMenuController {
 
     public void openYearChart() {
         mainController.setCenterView("/fxml/YearChartPanel.fxml");
-    }
-
-    public void openSummary() {
-        try {
-            budgetSummaryModel.initBudgetSummary();
-
-            String contentText = "Budżet: " + budgetSummaryModel.getBudgetSummaryFxObjectProperty().getMainValue() + "\n" +
-                    "Wydano: " + budgetSummaryModel.getBudgetSummaryFxObjectProperty().getSpentValue() + "\n" +
-                    "Pozostało: " + budgetSummaryModel.getBudgetSummaryFxObjectProperty().getRestValue() + "\n";
-            DialogUtils.dialogInfo(
-                    "Informacje o budżecie",
-                    getBudgetLabel(new Date()),
-                    contentText
-            );
-
-        } catch (SQLException | ApplicationException throwables) {
-            throwables.printStackTrace();
-        }
     }
 
     public BudgetSummaryModel getBudgetSummaryModel() {

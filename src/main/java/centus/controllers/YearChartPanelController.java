@@ -20,7 +20,7 @@ public class YearChartPanelController {
     @FXML
     private NumberAxis sumAxis;
 
-    SimpleDateFormat sdf = new SimpleDateFormat("dd.MM");
+    SimpleDateFormat sdf = new SimpleDateFormat("MMMM");
 
 
     public void initialize(){
