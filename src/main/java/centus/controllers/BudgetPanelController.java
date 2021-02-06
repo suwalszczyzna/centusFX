@@ -34,7 +34,6 @@ public class BudgetPanelController {
         this.budgetModel = new BudgetModel();
         try {
             this.budgetModel.init();
-            this.budgetModel.initBudgetSummary();
         } catch (ApplicationException | SQLException e) {
             e.printStackTrace();
         }

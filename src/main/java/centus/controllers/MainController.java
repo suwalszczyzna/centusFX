@@ -30,6 +30,12 @@ public class MainController {
 
     public void setCenterView(String fxmlPath) {
         borderPane.setCenter(FxmlUtils.fxmlLoader(fxmlPath));
+
+        try {
+            this.leftMenuController.getBudgetSummaryModel().initBudgetSummary();
+        } catch (SQLException | ApplicationException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     public void topMenuChangeUser() {
@@ -42,8 +48,6 @@ public class MainController {
             Platform.exit();
             System.exit(0);
         }
-
-
     }
 
     public void topMenuCloseApp() {

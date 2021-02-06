@@ -3,8 +3,7 @@ package centus.controllers;
 import centus.utils.DialogUtils;
 import centus.utils.converters.ConverterDate;
 import centus.utils.exceptions.ApplicationException;
-import centus.viewmodel.budgetModels.BudgetModel;
-import javafx.event.ActionEvent;
+import centus.viewmodel.budgetModels.BudgetSummaryModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleGroup;
@@ -16,24 +15,39 @@ import java.util.Date;
 import java.util.Locale;
 
 public class LeftMenuController {
+
+    @FXML
+    private Label budgetValueLabel;
+    @FXML
+    private Label spentValueLabel;
+    @FXML
+    private Label restValueLabel;
     @FXML
     private Label currentMonthLabel;
-    @FXML
-    private Label remainingBudgetValueLabel;
-    @FXML
-    private Label currentExpensesSumLabel;
-    @FXML
-    private Label currentBudgetValueLabel;
     @FXML
     private ToggleGroup menu;
 
     private MainController mainController;
 
-    private BudgetModel budgetModel;
+    private BudgetSummaryModel budgetSummaryModel;
 
     public void initialize(){
+        budgetSummaryModel = new BudgetSummaryModel();
+        try {
+            budgetSummaryModel.initBudgetSummary();
+        } catch (SQLException | ApplicationException throwables) {
+            throwables.printStackTrace();
+        }
 
         currentMonthLabel.setText(getBudgetLabel(new Date()));
+        initLabels();
+
+    }
+
+    public void initLabels(){
+        this.spentValueLabel.textProperty().bindBidirectional(this.budgetSummaryModel.getBudgetSummaryFxObjectProperty().spentValueProperty());
+        this.budgetValueLabel.textProperty().bindBidirectional(this.budgetSummaryModel.getBudgetSummaryFxObjectProperty().mainValueProperty());
+        this.restValueLabel.textProperty().bindBidirectional(this.budgetSummaryModel.getBudgetSummaryFxObjectProperty().restValueProperty());
     }
 
     private String getBudgetLabel(Date date) {
@@ -71,22 +85,23 @@ public class LeftMenuController {
 
     public void openSummary() {
         try {
-            budgetModel = new BudgetModel();
-            budgetModel.initBudgetSummary();
+            budgetSummaryModel.initBudgetSummary();
 
-            String contentText = "Budżet: " + budgetModel.getBudgetSummaryFx().getMainValue() + "\n" +
-                    "Wydano: " + budgetModel.getBudgetSummaryFx().getSpentValue() + "\n" +
-                    "Pozostało: " + budgetModel.getBudgetSummaryFx().getRestValue() + "\n";
+            String contentText = "Budżet: " + budgetSummaryModel.getBudgetSummaryFxObjectProperty().getMainValue() + "\n" +
+                    "Wydano: " + budgetSummaryModel.getBudgetSummaryFxObjectProperty().getSpentValue() + "\n" +
+                    "Pozostało: " + budgetSummaryModel.getBudgetSummaryFxObjectProperty().getRestValue() + "\n";
             DialogUtils.dialogInfo(
                     "Informacje o budżecie",
                     getBudgetLabel(new Date()),
                     contentText
             );
 
-        } catch (SQLException throwables) {
+        } catch (SQLException | ApplicationException throwables) {
             throwables.printStackTrace();
-        } catch (ApplicationException e) {
-            e.printStackTrace();
         }
+    }
+
+    public BudgetSummaryModel getBudgetSummaryModel() {
+        return budgetSummaryModel;
     }
 }
