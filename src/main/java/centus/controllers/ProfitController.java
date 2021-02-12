@@ -14,6 +14,8 @@ import javafx.scene.image.ImageView;
 
 import java.time.LocalDate;
 
+import static centus.utils.creators.ButtonCreatorUtil.createDeleteButton;
+
 public class ProfitController {
 
     @FXML
@@ -26,6 +28,8 @@ public class ProfitController {
     private TableColumn<ProfitFX, ProfitCategoryFX> profitCategoryColumn;
     @FXML
     private TableColumn<ProfitFX, ProfitFX> deleteColumn;
+    @FXML
+    private TableColumn<ProfitFX, ProfitFX> editColumn;
     @FXML
     private NumberTextField profitValue;
     @FXML
@@ -89,14 +93,6 @@ public class ProfitController {
             }
         });
 
-    }
-
-    private Button createDeleteButton() {
-        Button button = new Button();
-        Image image = new Image(this.getClass().getResource("/icons/delete.png").toString());
-        ImageView imageView = new ImageView(image);
-        button.setGraphic(imageView);
-        return button;
     }
 
     public void addNewProfit() {

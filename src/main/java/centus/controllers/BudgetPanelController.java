@@ -15,6 +15,8 @@ import javafx.scene.image.ImageView;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+import static centus.utils.creators.ButtonCreatorUtil.createDeleteButton;
+
 public class BudgetPanelController {
 
     public NumberTextField budgetValue;
@@ -81,15 +83,6 @@ public class BudgetPanelController {
         });
 
     }
-
-    private Button createDeleteButton(){
-        Button button = new Button();
-        Image image = new Image(this.getClass().getResource("/icons/delete.png").toString());
-        ImageView imageView = new ImageView(image);
-        button.setGraphic(imageView);
-        return button;
-    }
-
 
     public void addNewBudget() {
         try {

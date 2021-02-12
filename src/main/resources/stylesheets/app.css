@@ -14,3 +14,25 @@
 .default-color1.chart-bar {
    -fx-bar-fill: #228B22;
 }
+
+.edit_button{
+    -fx-background-color: linear-gradient(#4B6F8E 6%, #193657 94%);
+}
+
+.edit_button:hover{
+    -fx-background-color: #4B6F8E;
+}
+.edit_button:pressed{
+    -fx-background-color: linear-gradient(#491404 -2%,#4B6F8E 94%);
+}
+
+.delete_button{
+    -fx-background-color: linear-gradient(#d93d11 6%, #91290B 94%);
+}
+
+.delete_button:hover{
+    -fx-background-color: #d93d11;
+}
+.delete_button:pressed{
+    -fx-background-color: linear-gradient(#91290B -2%,#d93d11 94%);
+}
