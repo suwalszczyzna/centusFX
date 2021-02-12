@@ -6,13 +6,15 @@ import centus.viewmodel.NumberTextField;
 import centus.viewmodel.expenseModels.ExpenseCategoryFX;
 import centus.viewmodel.expenseModels.ExpenseFX;
 import centus.viewmodel.expenseModels.ExpenseModel;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.time.LocalDate;
 
 public class ExpensesController {
-
     @FXML
     private Button addNewExpenseButton;
     @FXML
@@ -21,6 +23,8 @@ public class ExpensesController {
     private TableColumn<ExpenseFX, String> amountColumn;
     @FXML
     private TableColumn<ExpenseFX, ExpenseCategoryFX> expenseCategoryColumn;
+    @FXML
+    private TableColumn<ExpenseFX, ExpenseFX> deleteColumn;
     @FXML
     private NumberTextField expenseValue;
     @FXML
@@ -59,6 +63,39 @@ public class ExpensesController {
                         .or(this.categoryComboBox.valueProperty().isNull())
         );
 
+        this.deleteColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue()));
+        this.deleteColumn.setCellFactory(param -> new TableCell<ExpenseFX, ExpenseFX>(){
+            Button button = createDeleteButton();
+            @Override
+            protected void updateItem(ExpenseFX item, boolean empty) {
+                super.updateItem(item, empty);
+                if(empty){
+                    setGraphic(null);
+                    return;
+                }
+
+                if(!empty) {
+                    setGraphic(button);
+                    button.setOnAction(event -> {
+                        try {
+                            expenseModel.deleteExpense(item);
+                        } catch (ApplicationException e) {
+                            DialogUtils.errorDialog(e.getMessage());
+                        }
+                    });
+                }
+            }
+        });
+
+
+    }
+
+    private Button createDeleteButton(){
+        Button button = new Button();
+        Image image = new Image(this.getClass().getResource("/icons/delete.png").toString());
+        ImageView imageView = new ImageView(image);
+        button.setGraphic(imageView);
+        return button;
     }
 
     public void addNewExpense() {

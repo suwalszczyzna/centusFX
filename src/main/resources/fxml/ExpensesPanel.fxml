@@ -78,9 +78,10 @@
         </HBox>
         <TableView fx:id="expenseTableVIew" prefHeight="327.0" prefWidth="650.0">
             <columns>
-                <TableColumn fx:id="dateColumn" prefWidth="128.6667150259018" text="Data" />
+                <TableColumn fx:id="dateColumn" prefWidth="130" text="Data" />
                 <TableColumn fx:id="amountColumn" prefWidth="500.0" text="Kwota" />
-            <TableColumn fx:id="expenseCategoryColumn" prefWidth="75.0" text="Kategoria" />
+                <TableColumn fx:id="expenseCategoryColumn" prefWidth="75.0" text="Kategoria" />
+                <TableColumn fx:id="deleteColumn" text="Usuń" maxWidth="900.0"/>
             </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

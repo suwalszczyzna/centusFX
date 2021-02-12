@@ -59,4 +59,10 @@ public class BudgetModel {
     public void setBudgetFxObservableList(ObservableList<BudgetFx> budgetFxObservableList) {
         this.budgetFxObservableList = budgetFxObservableList;
     }
+
+    public void deleteBudget(BudgetFx budgetFx) throws ApplicationException {
+        BudgetDao budgetDao = new BudgetDao();
+        budgetDao.deleteById(Budget.class, budgetFx.getId());
+        initBudgetList();
+    }
 }

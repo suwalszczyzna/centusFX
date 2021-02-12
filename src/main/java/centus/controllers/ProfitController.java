@@ -6,12 +6,16 @@ import centus.viewmodel.NumberTextField;
 import centus.viewmodel.profitModels.ProfitCategoryFX;
 import centus.viewmodel.profitModels.ProfitFX;
 import centus.viewmodel.profitModels.ProfitModel;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.time.LocalDate;
 
 public class ProfitController {
+
     @FXML
     private Button addNewProfitButton;
     @FXML
@@ -20,6 +24,8 @@ public class ProfitController {
     private TableColumn<ProfitFX, String> amountColumn;
     @FXML
     private TableColumn<ProfitFX, ProfitCategoryFX> profitCategoryColumn;
+    @FXML
+    private TableColumn<ProfitFX, ProfitFX> deleteColumn;
     @FXML
     private NumberTextField profitValue;
     @FXML
@@ -58,6 +64,39 @@ public class ProfitController {
                         .or(this.categoryComboBox.valueProperty().isNull())
         );
 
+        this.deleteColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue()));
+        this.deleteColumn.setCellFactory(param -> new TableCell<ProfitFX, ProfitFX>() {
+            Button button = createDeleteButton();
+
+            @Override
+            protected void updateItem(ProfitFX item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                    return;
+                }
+
+                if (!empty) {
+                    setGraphic(button);
+                    button.setOnAction(event -> {
+                        try {
+                            profitModel.deleteProfit(item);
+                        } catch (ApplicationException e) {
+                            DialogUtils.errorDialog(e.getMessage());
+                        }
+                    });
+                }
+            }
+        });
+
+    }
+
+    private Button createDeleteButton() {
+        Button button = new Button();
+        Image image = new Image(this.getClass().getResource("/icons/delete.png").toString());
+        ImageView imageView = new ImageView(image);
+        button.setGraphic(imageView);
+        return button;
     }
 
     public void addNewProfit() {

@@ -86,4 +86,10 @@ public class ExpenseModel {
     public void setExpenseFxObjectProperty(ExpenseFX expenseFXObjectProperty) {
         this.expenseFxObjectProperty.set(expenseFXObjectProperty);
     }
+
+    public void deleteExpense(ExpenseFX expenseFX) throws ApplicationException {
+        ExpenseDao expenseDao = new ExpenseDao();
+        expenseDao.deleteById(Expense.class, expenseFX.getId());
+        this.initExpensesList();
+    }
 }

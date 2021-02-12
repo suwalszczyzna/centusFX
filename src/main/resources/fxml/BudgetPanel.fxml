@@ -74,6 +74,7 @@
             <columns>
                 <TableColumn fx:id="dateBudgetColumn" prefWidth="246.3333078622818" text="Data" />
                 <TableColumn fx:id="amountBudgetColumn" prefWidth="402.3332977294922" text="Kwota" />
+                <TableColumn fx:id="deleteColumn" text="Usuń" maxWidth="900.0"/>
             </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

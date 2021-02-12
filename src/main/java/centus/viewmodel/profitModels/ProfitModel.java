@@ -83,4 +83,10 @@ public class ProfitModel {
     public void setProfitCategoryFxObservableList(ObservableList<ProfitCategoryFX> profitCategoryFXObservableList) {
         this.profitCategoryFXObservableList = profitCategoryFXObservableList;
     }
+
+    public void deleteProfit(ProfitFX profitFX) throws ApplicationException {
+        ProfitDao profitDao = new ProfitDao();
+        profitDao.deleteById(Profit.class, profitFX.getId());
+        initProfitsList();
+    }
 }
