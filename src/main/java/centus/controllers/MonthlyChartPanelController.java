@@ -39,14 +39,7 @@ public class MonthlyChartPanelController {
             expensesSeries.getData().add(new XYChart.Data<>(sdf.format(data.getDate()), data.getAmountExpenses()));
         });
 
-        XYChart.Series<String, Number> profitsSeries = new XYChart.Series<>();
-        profitsSeries.setName("Przychody");
-        monthlyChartModel.getChartItems().forEach(data -> {
-            profitsSeries.getData().add(new XYChart.Data<>(sdf.format(data.getDate()), data.getAmountProfits()));
-        });
-
-
-        monthlyLineChart.getData().addAll(expensesSeries, profitsSeries);
+        monthlyLineChart.getData().addAll(expensesSeries);
 
     }
 

@@ -33,7 +33,7 @@
                             <transformers>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>biblioteczka.Main</mainClass>
+                                    <mainClass>centus.Main</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

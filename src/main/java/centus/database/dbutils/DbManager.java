@@ -14,7 +14,7 @@ public class DbManager {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DbManager.class);
 
-    private static final String JDBC_DRIVER_HD = "jdbc:h2:C:/Users/Damian/centus3";
+    private static final String JDBC_DRIVER_HD = "jdbc:h2:./centusDB";
     private static final String USER = "admin";
     private static final String PASS = "admin";
 

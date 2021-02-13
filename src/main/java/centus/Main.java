@@ -1,7 +1,9 @@
 package centus;
 
+import centus.database.dbutils.DbManager;
 import centus.database.model.User;
 import centus.utils.DialogUtils;
+import centus.utils.FillDatabase;
 import centus.utils.FxmlUtils;
 import centus.utils.exceptions.ApplicationException;
 import centus.utils.exceptions.LoginFailException;
@@ -25,8 +27,8 @@ public class Main extends Application {
     }
 
     public void start(Stage primaryStage) throws IOException {
-//        DbManager.initDatabase();
-//        FillDatabase.fillDatabase();
+        DbManager.initDatabase();
+        FillDatabase.fillDatabase();
 
         try {
             User user = UserUtils.loginUser();
@@ -40,7 +42,7 @@ public class Main extends Application {
             primaryStage.setScene(scene);
             primaryStage.setTitle("CentuśFX");
             primaryStage.setResizable(false);
-            primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("../icons/main_ico.png")));
+            primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("/icons/main_ico.png")));
             primaryStage.show();
 
 

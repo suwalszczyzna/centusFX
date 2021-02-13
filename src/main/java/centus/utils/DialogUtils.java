@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.util.Pair;
@@ -46,13 +47,13 @@ public class DialogUtils {
         information.showAndWait();
     }
 
-    public static Optional<Pair<String, String>> loginDialog() {
+    public static Optional<Pair<String, String>> loginDialog(String title) {
 
         Dialog<Pair<String, String>> dialog = new Dialog<>();
-        dialog.setTitle("Logowanie");
+        dialog.setTitle(title);
         dialog.setHeaderText("Wpisz nazwę użytkownika i hasło");
 
-//      dialog.setGraphic(new ImageView(this.getClass().getResource("login.png").toString()));
+        dialog.setGraphic(new ImageView(DialogUtils.class.getResource("/icons/login.png").toString()));
 
         ButtonType loginButtonType = new ButtonType("Zaloguj", ButtonBar.ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);

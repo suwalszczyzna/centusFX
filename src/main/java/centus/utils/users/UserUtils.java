@@ -14,13 +14,12 @@ public class UserUtils {
 
     public static User loginUser() throws SQLException, ApplicationException, LoginFailException {
         PasswordAuthentication auth = new PasswordAuthentication();
-        Optional<Pair<String, String>> userInfo = DialogUtils.loginDialog();
+        Optional<Pair<String, String>> userInfo = DialogUtils.loginDialog("Logowanie");
         User user = null;
         if (userInfo.isPresent()) {
             Pair<String, String> pair = userInfo.get();
 
             UserDao userDao = new UserDao();
-
 
             user = userDao.getByUsername(pair.getKey());
             boolean passwordValid = auth.authenticate(pair.getValue(), user.getPassword());
