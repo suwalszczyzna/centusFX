@@ -19,6 +19,19 @@ public class FillDatabase {
         return Math.round(result * 100.0) / 100.0;
     }
 
+    public static void createTestUser() {
+        User damian = new User();
+        damian.setName("test");
+        damian.setPassword("test");
+
+        UserDao userDao = new UserDao();
+        try {
+            userDao.createOrUpdate(damian);
+        } catch (ApplicationException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void fillDatabase() {
         User damian = new User();
         damian.setName("damian");

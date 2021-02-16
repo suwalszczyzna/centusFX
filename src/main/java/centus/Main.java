@@ -28,7 +28,8 @@ public class Main extends Application {
 
     public void start(Stage primaryStage) throws IOException {
         DbManager.initDatabase();
-        FillDatabase.fillDatabase();
+//        FillDatabase.fillDatabase();
+        FillDatabase.createTestUser();
 
         try {
             User user = UserUtils.loginUser();
